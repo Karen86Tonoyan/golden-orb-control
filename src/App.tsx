@@ -9,6 +9,7 @@ import Repositories from "./pages/Repositories";
 import CV from "./pages/CV";
 import Projects from "./pages/Projects";
 import Manifests from "./pages/Manifests";
+import Services from "./pages/Services";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
