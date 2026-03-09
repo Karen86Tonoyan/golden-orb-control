@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { FileText, BookOpen, Shield, Brain, Zap } from 'lucide-react';
+import { FileText, BookOpen, Shield, Brain, Zap, Globe } from 'lucide-react';
 
 const manifests = [
   {
@@ -23,6 +23,16 @@ const manifests = [
     title: 'Manifest Kreatywny',
     content: `Programowanie to sztuka, a AI to nowe płótno. Od ComfyUI przez Stable Diffusion po DaVinci Resolve 4K — łączę technologię z wizją artystyczną. RTX 5070 Ti nie służy tylko do obliczeń — służy do tworzenia.`,
   },
+  {
+    icon: Globe,
+    title: 'Psychologia Zwycięstwa',
+    content: `Od mindsetu do milionów — zmień myślenie, zmień życie. Kocham udowadniać, że jednak się da. Od myślenia do pieniędzy. Od chaosu do kontroli. Od porażek do dominacji. Nowa inicjatywa: projekt dla tych, których nie stać na terapię — bezpłatne narzędzie AI do wsparcia psychologicznego.`,
+  },
+  {
+    icon: Shield,
+    title: 'Collective Mind — Wizja',
+    content: `Systemy AI powinny dzielić się wiedzą o zagrożeniach. Gdy jeden system wykryje nowy typ ataku, zapisuje jego strukturę — sekwencję działań, wzorce promptów, sygnatury kodu, metody obejścia filtrów. Inne systemy uzyskują odporność natychmiast. Jak globalny system immunologiczny. Współpraca zamiast rywalizacji.`,
+  },
 ];
 
 const books = [
@@ -44,7 +54,7 @@ const Manifests: React.FC = () => (
   <div className="container mx-auto px-4 py-12">
     <div className="max-w-3xl mx-auto">
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">Manifesty & Twórczość</h1>
-      <p className="text-muted-foreground mb-10">Przekonania, wizje i publikacje literackie.</p>
+      <p className="text-muted-foreground mb-10">Przekonania, wizje, filozofia i publikacje literackie.</p>
 
       {/* Manifests */}
       <section className="mb-12">
@@ -84,6 +94,19 @@ const Manifests: React.FC = () => (
           ))}
         </div>
       </section>
+
+      {/* GPT Link */}
+      <div className="mt-10 p-5 rounded-lg bg-card border border-border text-center">
+        <p className="text-sm text-muted-foreground mb-2">Bezpłatne narzędzie AI do wsparcia psychologicznego:</p>
+        <a
+          href="https://chatgpt.com/g/g-69ac5a048c14819181a81781d4169c0c-psychologia-zwyciestwa"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary font-medium hover:underline"
+        >
+          Psychologia Zwycięstwa — ChatGPT →
+        </a>
+      </div>
     </div>
   </div>
 );

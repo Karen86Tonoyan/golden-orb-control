@@ -8,6 +8,7 @@ const links = [
   { to: '/repositories', label: 'Repozytoria' },
   { to: '/cv', label: 'CV' },
   { to: '/projects', label: 'Projekty' },
+  { to: '/services', label: 'Usługi' },
   { to: '/manifests', label: 'Manifesty' },
 ];
 

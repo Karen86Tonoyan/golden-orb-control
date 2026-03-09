@@ -9,6 +9,7 @@ import Repositories from "./pages/Repositories";
 import CV from "./pages/CV";
 import Projects from "./pages/Projects";
 import Manifests from "./pages/Manifests";
+import Services from "./pages/Services";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/cv" element={<CV />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/manifests" element={<Manifests />} />
+            <Route path="/services" element={<Services />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

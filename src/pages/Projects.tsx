@@ -1,28 +1,38 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ExternalLink, Globe, Shield, Brain, Smartphone, Code, Film, Database } from 'lucide-react';
+import { ExternalLink, Globe, Shield, Brain, Smartphone, Code, Film, Database, Zap, Search, Cpu, Volume2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
-type ProjectStatus = 'active' | 'core' | 'web' | 'mobile' | 'creative';
+type ProjectStatus = 'active' | 'core' | 'web' | 'mobile' | 'tools';
+
+const statusLabels: Record<ProjectStatus, string> = {
+  active: '🔴 TOP PRIORITY',
+  core: '🟡 CORE SYSTEMY',
+  web: '🟢 WEB & WORDPRESS',
+  mobile: '📱 MOBILE',
+  tools: '🔧 NARZĘDZIA & AUTOMATYZACJA',
+};
 
 const statusColors: Record<ProjectStatus, string> = {
   active: 'bg-destructive text-destructive-foreground',
   core: 'bg-primary text-primary-foreground',
   web: 'bg-secondary text-secondary-foreground',
   mobile: 'bg-accent text-accent-foreground',
-  creative: 'bg-muted text-muted-foreground',
+  tools: 'bg-muted text-muted-foreground',
 };
 
-const statusLabels: Record<ProjectStatus, string> = {
-  active: '🔴 TOP PRIORITY',
-  core: '🟡 CORE SYSTEM',
-  web: '🟢 WEB',
-  mobile: '📱 MOBILE',
-  creative: '📚 TWÓRCZOŚĆ',
-};
-
-const projects: { name: string; description: string; url?: string; tech: string[]; status: ProjectStatus; icon: React.ElementType }[] = [
+const projects: { name: string; description: string; url?: string; tech: string[]; status: ProjectStatus; icon: React.ElementType; components?: string[] }[] = [
+  // ACTIVE
+  {
+    name: 'ALFA CORE v2.0 — Multi-AI Orchestration',
+    description: 'System orkiestracji AI integrujący wiele modeli w jednym środowisku. Zarządzanie modelami lokalnymi i API, wybór najlepszego modelu do zadania, kontrola jakości odpowiedzi.',
+    url: 'https://github.com/Karen86Tonoyan/karen1986bot',
+    tech: ['Python', 'Shell', 'TypeScript', 'HTML'],
+    status: 'active',
+    icon: Brain,
+    components: ['main.py', 'ollama_client.py', 'gemini_connector.py', 'deepseek_integration.py', 'event_bus.py', 'config.py'],
+  },
   {
     name: 'ALFA Platform X MVP',
     description: '100% security score, 30 scenariuszy testowych. Deception Engine + Cerber + Guardian — kompletna platforma bezpieczeństwa AI.',
@@ -30,14 +40,6 @@ const projects: { name: string; description: string; url?: string; tech: string[
     tech: ['Python', 'AI Security', 'Deception Engine'],
     status: 'active',
     icon: Shield,
-  },
-  {
-    name: 'karen1986bot',
-    description: 'Bot z integracją Kimi/Moonshot. PR #22 — aktywny rozwój. Automatyzacja i AI assistant.',
-    url: 'https://github.com/ktono86tonoyan',
-    tech: ['Python', 'GitHub', 'AI'],
-    status: 'active',
-    icon: Brain,
   },
   {
     name: 'AI Security Dataset',
@@ -53,34 +55,66 @@ const projects: { name: string; description: string; url?: string; tech: string[
     status: 'active',
     icon: Film,
   },
+  // CORE
   {
-    name: 'FILTRY TONOYANA v1.0',
-    description: '7 filtrów anty-halucynacyjnych, 95% niezawodność. TDCM — Tonoyan Dynamic Confidence Model.',
-    tech: ['AI Filtering', 'TDCM', 'Anti-hallucination'],
+    name: 'FILTRY TONOYANA — Anti-Hallucination System',
+    description: '7 filtrów anty-halucynacyjnych ograniczających halucynacje modeli AI. Analiza spójności logicznej, struktury i zgodności z zasadami bezpieczeństwa. 95% niezawodność, TDCM.',
+    url: 'https://github.com/Karen86Tonoyan/filtry-TONOYAN',
+    tech: ['Python', 'FastAPI', 'PHI-3', 'Shell'],
     status: 'core',
     icon: Shield,
+    components: ['filters.py', 'filter1-7.py', 'app.py (FastAPI)', 'ai_local.py', 'nano_banana.py', 'brain.py (REPL)', 'cerber/risk_engine.py'],
   },
   {
-    name: 'NOWA LOGIKA AI v2.0.0-ENTERPRISE',
-    description: '83/83 testy zaliczone. Dual-gate filter, harmonic mean confidence scoring.',
-    tech: ['AI Logic', 'Testing', 'Enterprise'],
+    name: 'Filtry Bezpieczeństwa ALFA',
+    description: 'Narzędzia zabezpieczające AI przed manipulacją, przeciążeniem i nieautoryzowanymi działaniami. Dodatkowa warstwa ochrony między użytkownikiem a modelem.',
+    url: 'https://github.com/Karen86Tonoyan/alfafiltrybezpieczenstwa',
+    tech: ['Python', 'FastAPI', 'Cerber Metrics'],
+    status: 'core',
+    icon: Shield,
+    components: ['filter.py', 'app.py', 'engine_v2.py', 'cerber/post_crisis_guard.py', 'memory_manager.py'],
+  },
+  {
+    name: 'ALFA 360 — Zero Hallucination Framework',
+    description: 'Framework do ograniczenia halucynacji AI i zwiększenia stabilności. Warstwa ochronna dla produkcyjnych systemów AI.',
+    url: 'https://github.com/Karen86Tonoyan/-ALFA-360-Open-Manifesto-',
+    tech: ['Python', 'HTML', 'SCSS', 'REST API'],
     status: 'core',
     icon: Brain,
+    components: ['framework.py', 'cerber_alfa360_core.py', 'guardian.py', 'collective_mind.py', 'bridge_server.py'],
+  },
+  {
+    name: 'NOWA LOGIKA AI — Eliminacja Halucynacji',
+    description: '83/83 testy zaliczone. Dual-gate filter, harmonic mean confidence scoring. Mechanizmy kontroli procesu generowania odpowiedzi.',
+    url: 'https://github.com/Karen86Tonoyan/NOWA-LOGIKA-AI-BRAK-HALUCYNACJI',
+    tech: ['Python', 'AI Logic', 'Testing'],
+    status: 'core',
+    icon: Brain,
+    components: ['main.py', 'logic_engine.py', 'hallucination_proof.py'],
+  },
+  {
+    name: 'ALFA CORE — Architektura 6 Filarów',
+    description: 'Modularna architektura: CORE (logika), BRIDGE (komunikacja), SEAT (sesje), VOICE (interfejs głosowy), GUARD (bezpieczeństwo), BRAIN (analiza AI).',
+    url: 'https://github.com/Karen86Tonoyan/ALFA__CORE',
+    tech: ['Python', 'FastAPI', 'CLI', 'Architecture'],
+    status: 'core',
+    icon: Cpu,
   },
   {
     name: 'CERBER Security Engine',
-    description: 'Kotlin — Łasuch v1.2, prompt injection scoring, zaawansowane wykrywanie zagrożeń.',
-    tech: ['Kotlin', 'Security', 'Prompt Injection'],
+    description: 'Centralny system bezpieczeństwa ALFA. Monitoruje działanie, analizuje zachowania, rejestruje próby manipulacji. Kotlin — Łasuch v1.2, prompt injection scoring.',
+    tech: ['Kotlin', 'Python', 'Security'],
     status: 'core',
     icon: Shield,
   },
   {
     name: 'TRINITY System',
-    description: 'Karen (КОРОЛЬ) + Claude (КОРОЛЕВА) + GPT (ГЕНЕРАЛ) — trzy AI pracujące jako zespół.',
+    description: 'Karen (КОРОЛЬ) + Claude (КОРОЛЕВА) + GPT (ГЕНЕРАЛ) — trzy AI pracujące jako zespół w orkiestracji.',
     tech: ['Multi-AI', 'Orchestration', 'Architecture'],
     status: 'core',
     icon: Brain,
   },
+  // WEB
   {
     name: 'ALFA AI WordPress Manager PRO',
     description: '40+ REST API endpoints. Zarządzanie treścią WordPress z poziomu AI.',
@@ -96,6 +130,41 @@ const projects: { name: string; description: string; url?: string; tech: string[
     status: 'web',
     icon: Code,
   },
+  // TOOLS
+  {
+    name: 'Audyt Strony — Automatyczna Analiza WWW',
+    description: 'Automatyczna analiza stron pod kątem bezpieczeństwa, wydajności i SEO. Raporty PDF. Interfejs CLI + agent AI.',
+    url: 'https://github.com/Karen86Tonoyan/Audytstrony',
+    tech: ['Python', 'CLI', 'PDF Generator'],
+    status: 'tools',
+    icon: Search,
+    components: ['agent/cli.py', 'agent/core/agent.py', 'agent/modules/web_audit.py', 'pdf_generator.py'],
+  },
+  {
+    name: 'Human and Machine AI',
+    description: 'Integracja człowieka i AI w procesach automatyzacji. Pluginy: generowanie kodu, automatyzacja Git, diagnostyka systemu, generator PDF.',
+    url: 'https://github.com/Karen86Tonoyan/Human-and-Machine-AI',
+    tech: ['Python', 'JavaScript', 'PowerShell'],
+    status: 'tools',
+    icon: Zap,
+    components: ['ai_models.py', 'git_auto.py', 'code_generator.py', 'SystemDoctor', 'pdf_generator.py'],
+  },
+  {
+    name: 'Automatyzacja Kimi Claw',
+    description: 'System sterowania AI w przeglądarce. Symulacja działań użytkownika, analiza ekranu, SoundBox (sterowanie głosowe), warstwa Cloud Skin.',
+    url: 'https://github.com/Karen86Tonoyan/kimi-claw-automation',
+    tech: ['Python', 'Automation', 'SoundBox'],
+    status: 'tools',
+    icon: Zap,
+  },
+  {
+    name: 'SoundBox + Cerber — Bezpieczeństwo Sprzętowe',
+    description: 'Izolowane środowisko pracy AI z siecią Tailscale. Monitoring sprzętu (CPU/GPU/RAM), audyt działania AI, kontrola połączeń sieciowych.',
+    tech: ['Python', 'Tailscale', 'Hardware Security'],
+    status: 'tools',
+    icon: Volume2,
+  },
+  // MOBILE
   {
     name: 'Cerber Security App',
     description: 'Aplikacja mobilna w Kivy/Python. Samsung S24 Ultra z Knox Secure Element.',
@@ -109,9 +178,9 @@ const Projects: React.FC = () => (
   <div className="container mx-auto px-4 py-12">
     <div className="max-w-4xl mx-auto">
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">Projekty & Ekosystem ALFA</h1>
-      <p className="text-muted-foreground mb-10">Pełna mapa aktywnych projektów, systemów i platform.</p>
+      <p className="text-muted-foreground mb-10">Pełna mapa aktywnych projektów, systemów i platform — z karentonoyan.pl i GitHub.</p>
 
-      {(['active', 'core', 'web', 'mobile'] as ProjectStatus[]).map(status => {
+      {(['active', 'core', 'tools', 'web', 'mobile'] as ProjectStatus[]).map(status => {
         const group = projects.filter(p => p.status === status);
         if (!group.length) return null;
         return (
@@ -130,12 +199,22 @@ const Projects: React.FC = () => (
                     </div>
                     <CardDescription className="mt-1">{p.description}</CardDescription>
                   </CardHeader>
-                  <CardContent className="flex flex-wrap items-center gap-3">
-                    <div className="flex flex-wrap gap-2 flex-1">
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2 mb-3">
                       {p.tech.map(t => (
                         <span key={t} className="text-xs px-2 py-1 rounded bg-muted text-muted-foreground">{t}</span>
                       ))}
                     </div>
+                    {p.components && (
+                      <div className="mb-3">
+                        <p className="text-xs text-muted-foreground mb-1 font-medium">Komponenty:</p>
+                        <div className="flex flex-wrap gap-1">
+                          {p.components.map(c => (
+                            <span key={c} className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary font-mono">{c}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                     {p.url && (
                       <a href={p.url} target="_blank" rel="noopener noreferrer">
                         <Button variant="outline" size="sm">
@@ -150,6 +229,29 @@ const Projects: React.FC = () => (
           </section>
         );
       })}
+
+      {/* ALFA Architecture */}
+      <section className="mt-12 mb-10">
+        <h2 className="text-xl font-bold text-foreground mb-4">ALFA — Architektura systemów AI</h2>
+        <p className="text-sm text-muted-foreground mb-6">
+          Spójna architektura łącząca modele AI, narzędzia automatyzacji i systemy bezpieczeństwa w jeden ekosystem.
+        </p>
+        <div className="grid md:grid-cols-2 gap-4">
+          {[
+            { title: 'ALFA Bridge', desc: 'Zarządzanie komunikacją między użytkownikiem a systemem. Tokeny dostępu, autoryzacja, bezpieczne dane zastępcze.' },
+            { title: 'Cerber', desc: 'Centralny system bezpieczeństwa. Monitoring, analiza zachowań, rejestracja manipulacji, generowanie mechanizmów obronnych.' },
+            { title: 'Guardian', desc: 'Nadzór aktywności systemu. Identyfikacja nietypowych zachowań, analiza ruchu, procedury bezpieczeństwa.' },
+            { title: 'Łasuch (Lasuch)', desc: 'Przechwytywanie zagrożeń odwrotną logiką — przyciąga manipulacje do kontrolowanego środowiska w celu analizy.' },
+            { title: 'Collective Mind', desc: 'Wspólne repozytorium wiedzy o atakach. Systemy AI dzielą się informacjami o zagrożeniach — jak globalny system immunologiczny.' },
+            { title: 'SoundBox', desc: 'Izolacja sprzętowa AI z Tailscale. Monitoring CPU/GPU, audyt działań, sterowanie głosowe.' },
+          ].map((item, i) => (
+            <div key={i} className="p-4 rounded-lg bg-card border border-border">
+              <h3 className="font-semibold text-foreground mb-1 text-sm">{item.title}</h3>
+              <p className="text-xs text-muted-foreground">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   </div>
 );
