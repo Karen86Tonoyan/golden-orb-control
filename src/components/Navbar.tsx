@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
     <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/" className="font-serif text-xl font-bold text-foreground tracking-tight">
-          Keren Tonoyan
+          Karen Tonoyan
         </Link>
 
         {/* Desktop */}

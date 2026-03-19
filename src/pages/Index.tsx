@@ -14,12 +14,12 @@ const Index: React.FC = () => {
         {user?.avatar_url && (
           <img
             src={user.avatar_url}
-            alt="Keren Tonoyan"
+            alt="Karen Tonoyan"
             className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-primary/20 shadow-lg"
           />
         )}
         <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-2">
-          Keren Tonoyan
+          Karen Tonoyan
         </h1>
         <p className="text-lg md:text-xl text-primary font-semibold mb-1">
           Psychologia Zwycięstwa

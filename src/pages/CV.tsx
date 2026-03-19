@@ -54,7 +54,7 @@ const CV: React.FC = () => (
   <div className="container mx-auto px-4 py-12">
     <div className="max-w-3xl mx-auto">
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">CV & Doświadczenie</h1>
-      <p className="text-muted-foreground mb-10">Keren Tonoyan — AI Security Architect, Full-Stack Developer, Creator.</p>
+      <p className="text-muted-foreground mb-10">Karen Tonoyan — AI Security Architect, Full-Stack Developer, Creator.</p>
 
       {/* Experience */}
       <section className="mb-10">
