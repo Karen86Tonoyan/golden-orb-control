@@ -14,7 +14,7 @@ const Index: React.FC = () => {
         {user?.avatar_url && (
           <img
             src={user.avatar_url}
-            alt="Keren Tonoyan"
+            alt="Karen Tonoyan"
             className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-primary/20 shadow-lg"
           />
         )}
