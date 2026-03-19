@@ -19,7 +19,7 @@ const Index: React.FC = () => {
           />
         )}
         <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-2">
-          Keren Tonoyan
+          Karen Tonoyan
         </h1>
         <p className="text-lg md:text-xl text-primary font-semibold mb-1">
           Psychologia Zwycięstwa
