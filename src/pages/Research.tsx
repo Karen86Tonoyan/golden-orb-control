@@ -223,6 +223,89 @@ const Research: React.FC = () => (
         </div>
       </section>
 
+      {/* ALFA Security Update */}
+      <section className="mb-10">
+        <div className="flex items-center gap-2 mb-4">
+          <Badge className="bg-primary text-primary-foreground">UPDATE</Badge>
+          <h2 className="text-2xl font-bold text-foreground">6. ALFA Security Update</h2>
+        </div>
+        <Card className="border-primary/40 bg-gradient-to-br from-card to-primary/5">
+          <CardContent className="pt-6 space-y-6">
+            <p className="text-muted-foreground leading-relaxed">
+              Zbudowaliśmy własną warstwę filtrów i kontroli bezpieczeństwa dla środowiska
+              agentowego, lokalnych modeli i workflow AI.
+            </p>
+
+            <div>
+              <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-primary" /> Co już mamy
+              </h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                {[
+                  'Wielowarstwowe filtry bezpieczeństwa przed wykonaniem akcji',
+                  'Rozdzielenie między oceną ryzyka, pamięcią operacyjną i wykonaniem',
+                  'Kontrolę nad tym, czy agent w ogóle powinien działać',
+                  'Lokalny tryb pracy offline-first',
+                  'Mechanizmy walidacji stanu runtime, jobów i workflow',
+                  'Bramki bezpieczeństwa dla operacji, automatyzacji i integracji',
+                ].map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="text-primary mt-0.5">▸</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                <Layers className="h-4 w-4 text-primary" /> Jak to jest zbudowane
+              </h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                Nie jako jeden „magiczny filtr", tylko jako zestaw warstw:
+              </p>
+              <div className="grid md:grid-cols-5 gap-2">
+                {[
+                  'Analiza wejścia',
+                  'Klasyfikacja ryzyka',
+                  'Polityki decyzji',
+                  'Kontrola wykonania',
+                  'Ślad operacyjny i weryfikacja',
+                ].map((layer, i) => (
+                  <div key={layer} className="p-3 rounded-lg bg-card border border-border text-center">
+                    <div className="text-xs font-mono text-primary mb-1">L{i + 1}</div>
+                    <div className="text-xs font-semibold text-foreground">{layer}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-4 rounded-lg bg-primary/10 border border-primary/30">
+              <p className="text-sm text-foreground leading-relaxed">
+                <strong>Najważniejsze:</strong> nie interesuje nas tylko, czy AI <em>potrafi</em> coś zrobić.
+                Interesuje nas, czy <em>powinno</em> to zrobić, w jakim kontekście i z jakim poziomem zaufania.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-sm text-muted-foreground mb-2">
+                To nie jest kolejny wrapper na model. To budowa kontrolowanej infrastruktury AI:
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="outline">lokalnej</Badge>
+                <Badge variant="outline">audytowalnej</Badge>
+                <Badge variant="outline">warstwowej</Badge>
+                <Badge variant="outline">odpornej na chaos automatyzacji</Badge>
+              </div>
+            </div>
+
+            <p className="text-sm text-muted-foreground italic border-l-2 border-primary pl-3">
+              To dopiero początek, ale fundament już stoi.
+            </p>
+          </CardContent>
+        </Card>
+      </section>
+
       {/* Conclusion */}
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-foreground mb-4">7. Wnioski</h2>
