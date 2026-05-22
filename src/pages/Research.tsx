@@ -306,8 +306,101 @@ const Research: React.FC = () => (
         </Card>
       </section>
 
+      {/* ALFA Filters Composition */}
+      <section className="mb-10">
+        <div className="flex items-center gap-2 mb-4">
+          <Badge className="bg-primary text-primary-foreground">DEEP DIVE</Badge>
+          <h2 className="text-2xl font-bold text-foreground">6.1. Skład filtrów ALFA i sposób działania</h2>
+        </div>
+        <Card className="border-primary/30">
+          <CardContent className="pt-6 space-y-6">
+            <p className="text-muted-foreground leading-relaxed">
+              Nasza warstwa filtrów nie opiera się na jednym module, tylko na układzie kilku
+              współpracujących zabezpieczeń.
+            </p>
+
+            <div>
+              <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                <Layers className="h-4 w-4 text-primary" /> Skład
+              </h3>
+              <div className="grid md:grid-cols-2 gap-3">
+                {[
+                  { name: 'Filtr wejścia', desc: 'Ocenia prompt, komendę, plik albo żądanie przed uruchomieniem.' },
+                  { name: 'Filtr kontekstu', desc: 'Sprawdza, gdzie i w jakim trybie działa agent.' },
+                  { name: 'Filtr polityk', desc: 'Porównuje akcję z regułami bezpieczeństwa i dozwolonym zakresem operacji.' },
+                  { name: 'Filtr pamięci operacyjnej', desc: 'Uwzględnia historię, wcześniejsze incydenty i stan środowiska.' },
+                  { name: 'Filtr wykonania', desc: 'Decyduje, czy operacja może przejść do runtime.' },
+                  { name: 'Filtr weryfikacji', desc: 'Sprawdza, czy wynik zgadza się z tym, co naprawdę zostało wykonane.' },
+                  { name: 'Filtr audytu', desc: 'Zapisuje ślad decyzji, statusów i wyjątków.' },
+                ].map((f, i) => (
+                  <div key={f.name} className="flex gap-3 p-3 rounded-lg bg-card border border-border">
+                    <div className="flex-shrink-0 w-7 h-7 rounded bg-primary/10 text-primary flex items-center justify-center font-mono text-xs font-bold">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground text-sm">{f.name}</div>
+                      <div className="text-xs text-muted-foreground">{f.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-foreground mb-3">Jak to działa</h3>
+              <ol className="space-y-2 text-sm text-muted-foreground list-decimal list-inside">
+                <li>System odbiera żądanie</li>
+                <li>Analizuje treść i typ operacji</li>
+                <li>Sprawdza poziom ryzyka</li>
+                <li>Porównuje to z politykami i kontekstem</li>
+                <li>Jeśli akcja jest bezpieczna — przechodzi dalej</li>
+                <li>
+                  Jeśli jest podejrzana — trafia do{' '}
+                  <code className="px-1.5 py-0.5 rounded bg-muted text-primary font-mono text-xs">hold</code>,{' '}
+                  <code className="px-1.5 py-0.5 rounded bg-muted text-primary font-mono text-xs">review</code> albo{' '}
+                  <code className="px-1.5 py-0.5 rounded bg-muted text-primary font-mono text-xs">block</code>
+                </li>
+                <li>Po wykonaniu wynik jest jeszcze weryfikowany i logowany</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-foreground mb-3">Najważniejsze cechy</h3>
+              <ul className="space-y-1.5 text-sm text-muted-foreground">
+                {[
+                  'Działa warstwowo, a nie binarnie',
+                  'Ocenia nie tylko treść, ale też kontekst i skutki',
+                  'Może zatrzymać działanie przed wykonaniem',
+                  'Wspiera lokalny, kontrolowany tryb pracy',
+                  'Zostawia ślad audytowy do późniejszej analizy',
+                ].map((c) => (
+                  <li key={c} className="flex gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg bg-primary/10 border border-primary/30 space-y-2">
+              <p className="text-sm text-foreground font-semibold">Efekt</p>
+              <p className="text-sm text-muted-foreground">Nie pytamy tylko:</p>
+              <code className="block px-3 py-2 rounded bg-card font-mono text-xs text-muted-foreground">czy model umie to zrobić</code>
+              <p className="text-sm text-muted-foreground">Pytamy też:</p>
+              <div className="flex flex-wrap gap-2">
+                <code className="px-2 py-1 rounded bg-card font-mono text-xs text-primary">czy powinien to zrobić</code>
+                <code className="px-2 py-1 rounded bg-card font-mono text-xs text-primary">w jakim kontekście</code>
+                <code className="px-2 py-1 rounded bg-card font-mono text-xs text-primary">na jakich danych</code>
+                <code className="px-2 py-1 rounded bg-card font-mono text-xs text-primary">czy wynik można potwierdzić</code>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+
       {/* Conclusion */}
       <section className="mb-10">
+
         <h2 className="text-2xl font-bold text-foreground mb-4">7. Wnioski</h2>
         <Card className="border-primary/30">
           <CardContent className="pt-6">
