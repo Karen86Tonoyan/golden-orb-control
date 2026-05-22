@@ -1,4 +1,4 @@
-const GITHUB_USERNAME = 'ktono86tonoyan';
+const GITHUB_USERNAME = 'Karen86Tonoyan';
 const API_BASE = 'https://api.github.com';
 
 export interface GitHubRepo {
@@ -15,6 +15,7 @@ export interface GitHubRepo {
   updated_at: string;
   created_at: string;
   fork: boolean;
+  archived: boolean;
 }
 
 export interface GitHubUser {
@@ -38,8 +39,15 @@ export async function fetchGitHubUser(): Promise<GitHubUser> {
 }
 
 export async function fetchGitHubRepos(): Promise<GitHubRepo[]> {
-  const res = await fetch(`${API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`);
-  if (!res.ok) throw new Error('Failed to fetch GitHub repos');
-  const repos: GitHubRepo[] = await res.json();
-  return repos.filter(r => !r.fork);
+  const all: GitHubRepo[] = [];
+  for (let page = 1; page <= 5; page++) {
+    const res = await fetch(
+      `${API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100&page=${page}`
+    );
+    if (!res.ok) throw new Error('Failed to fetch GitHub repos');
+    const batch: GitHubRepo[] = await res.json();
+    all.push(...batch);
+    if (batch.length < 100) break;
+  }
+  return all;
 }

@@ -78,8 +78,8 @@ const Index: React.FC = () => {
       {/* Quick stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mt-8 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
         {[
-          { label: 'Repozytoria', value: user?.public_repos ?? '60+', icon: Github },
-          { label: 'Systemy AI', value: '10+', icon: Brain },
+          { label: 'Repozytoria', value: user?.public_repos ?? '317', icon: Github },
+          { label: 'Gwiazdki', value: '467', icon: Brain },
           { label: 'Security Score', value: '100%', icon: Shield },
           { label: 'Publikacje', value: '3', icon: BookOpen },
         ].map(s => (
